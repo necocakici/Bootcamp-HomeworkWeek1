@@ -1,3 +1,4 @@
+// Kullanıcıdan input almak için gerekli olan modüllerin importu:
 const readline = require("readline");
 const rl = readline.createInterface({
   input: process.stdin,
@@ -6,6 +7,7 @@ const rl = readline.createInterface({
 
 let number = 0;
 
+// Asal olup olmadığını kontrol eden fonksiyon:
 const isPrime = (_number) => {
   for (let i = 2; i < _number; i++) {
     if (_number % i === 0) {
@@ -15,14 +17,15 @@ const isPrime = (_number) => {
   return true;
 };
 
-rl.question("Sayi giriniz? ", (_number) => {
+// Console'dan sayının alınması
+rl.question("Enter an integer please: ", (_number) => {
   number = _number;
-  //console.log(`${number} is prime: ${isPrime(number)}`);
   rl.close();
-  //process.exit(0);
 });
 
+// Hesaplamanın yapılıp cevap döndürülmesi
 rl.on("close", () => {
-  console.log(`${number} is prime: ${isPrime(number)}`);
+  let check = isPrime(number);
+  console.log(`${number} is prime: ${check}`);
   process.exit(0);
 });
